@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>EPINuc - Upload dataset</title>
+</head>
+
+   <body>
+	<div class="main">
+      <h1>Update database:</h1>
+	
+	  <p class="main">Select a file from your personal computer
+	  and upload it to the existing database. Note the the file must be in a ".csv"
+        or ".xls" format and shouldn't have the same name as other, already
+        existing datasets in the database. A full list of the available dataset appears in the section below.</p>
+	  <p></p>
+         <form action = "http://localhost:5000/uploader" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type="hidden" value='upload' name='page_id'/>
+         <input type = "submit"/>
+         </form> 
+        <p></p>
+        <h2>Available datasets:</h2>
+        
+        <p class="main">This section contains a list of the datasets currently
+        available in the database. You can view and remove datasets as needed but please be carful
+        when deleting files as there is no back-up available.</p>
+	  <p></p>
+        <div class="grid-table">
+            <div>Uploaded on:</div>
+            <div>Dataset name:</div>
+            <div>File size:</div>
+            <div></div>
+            <div></div>
+          
+            {% for dataset in dataset_list %}
+            <div><p class="table">{{ dataset['time']}}</p></div>
+            <div><p class="table">{{ dataset['name'][:-4]}}</p></div>
+            <div><p class="table">{{ dataset['size']}} KB</p></div>
+            <div><p class="table"><a href='/view/{{dataset['name']}}' target="_blank">View</a></p></div>
+            <div><p class="table"><a href="delete_dataset/{{dataset['name']}}" >Delete</a></p></div>
+            
+            {% endfor %}
+       </div>
+        <p></p>
+	  <a href="/" class="home">Return to Homepage</a>
+	  <p></p>
+	  </div>
+	  
+   </body>
+</html>

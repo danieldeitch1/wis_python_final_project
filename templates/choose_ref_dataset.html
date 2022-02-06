@@ -1,0 +1,40 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>EPINuc - Search dataset</title>
+</head>
+
+<body>
+    <div class="main">
+	   <h1>Model fiting:</h1>
+	   <p class="main">Choose a dataset from the availeable database to be used as a reference for predictive model fiting.
+        Please note that fitting the models might take a few seconds.</p>
+	   <p></p>
+	    
+        <div class="grid-table">
+            <div>Dataset name:</div>
+            <div>Uploaded on:</div>
+            <div># healthy:</div>
+            <div># cancer:</div>
+            <div></div>
+          
+            {% for dataset in dataset_list %}
+            <div><p class="table">{{ dataset['name'][:-4]}}</p></div>
+            <div><p class="table">{{ dataset['time']}}</p></div>
+            <div><p class="table">{{ dataset['Hsubjects']}}</p></div>
+            <div><p class="table">{{ dataset['Csubjects']}}</p></div>
+            <div><p class="table"><a href='choose_classifier/{{dataset['name']}}'>Choose</a></p></div>
+            {% endfor %}
+       </div>
+        
+        <p></p>
+          <div class="grid-container">
+                <div><a href="/diagnosis">Back (uploading data for diagnosis)</a></div>
+                <div></div>
+                <div><a href="/">Return to Homepage</a></div>
+            </div>
+	   <p></p>
+        
+    </div>
+</body>
+</html>

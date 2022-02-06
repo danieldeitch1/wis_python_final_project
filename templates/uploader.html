@@ -1,0 +1,74 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>EPINuc - Upload dataset</title>
+</head>
+
+   <body>
+	<div class="main">
+        {% if err == 1 %}
+            <h1 class="error">Error! No file detected!</h1>
+            <p class="block">Description: the user did not select a file to upload.</p>
+	        <p class="block">Please make sure select a file in a "csv" or "xls" format.</p>
+            <p></p>
+            <div class="grid-container">
+                 {% if page_id == 'upload' %}
+                <div><a href="/upload">Try again!</a></div>
+                {% elif page_id == 'diag' %}
+                <div><a href="/diagnosis">Try again!</a></div>
+                {% endif %}
+                <div></div>
+                <div><a href="/">Return to Homepage</a></div>
+            </div>
+        
+         {% elif err == 2 %}
+            <h1 class="error">Error! Invalid file format!</h1>
+            <p class="block">Description: the selected file is not in the right format.</p>
+	        <p class="block">Please make sure the selected file is in a "csv" or "xls" format.</p>
+            <p></p>
+            <div class="grid-container">
+                
+                {% if page_id == 'upload' %}
+                <div><a href="/upload">Try again!</a></div>
+                {% elif page_id == 'diag' %}
+                <div><a href="/diagnosis">Try again!</a></div>
+                {% endif %}
+                
+                <div></div>
+                <div><a href="/">Return to Homepage</a></div>
+            </div>
+	       
+        {% elif err == 3 %}
+            <h1 class="error">Error! Upload failed!</h1>
+            <p class="block">Description: a dataset with the exact same name already exist in our database.</p>
+	        <p class="block">Please change the name of the file and try again.</p>
+            <p></p>
+            <div class="grid-container">
+                <div><a href="/upload">Try again!</a></div>
+                <div></div>
+                <div><a href="/">Return to Homepage</a></div>
+            </div>
+	   
+        {% elif err == 4 %}
+            <h1 class="error">Error! Dataset already exist!</h1>
+            <p class="block">Description: the select dataset contant already exist in our database.</p>
+	        <p class="block">Please select a different dataset and try again.</p>
+            <p></p>
+            <div class="grid-container">
+                <div><a href="/upload">Try again!</a></div>
+                <div></div>
+                <div><a href="/">Return to Homepage</a></div>
+            </div>
+        {% elif err == 5 %}
+            <h2>"{{dataset_name}}" was successfully deleted!</h2>
+	        <p class="block">You will be redirected back to the uploading page in 5 seconds</p>
+       
+        {% else %}
+            <h2>File uploaded successfully!</h2>
+	        <p class="block">You will be redirected back to the uploading page in 5 seconds</p>
+        {% endif %}
+        <p></p>
+	  </div>
+	  
+   </body>
+</html>

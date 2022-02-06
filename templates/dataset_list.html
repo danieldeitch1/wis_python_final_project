@@ -1,0 +1,47 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>EPINuc - Search dataset</title>
+</head>
+
+<body>
+    <div class="main">
+	   <h1>Search database:</h1>
+	   <p class="main">Look for dataset of interest by typing words in the search bar.</p>
+	   <p></p>
+		  
+	   <form method="POST" action="/dataset_list">
+           <input name="word">
+           <input type="submit" value="Search">
+	   </form>
+	    
+        {% if err == 0 %}
+        <h2>Datasets found:</h2>
+        <div class="grid-table">
+            <div>Uploaded on:</div>
+            <div>Dataset name:</div>
+            <div>File size:</div>
+            <div></div>
+            <div></div>
+          
+            {% for dataset in dataset_list %}
+            <div><p class="table">{{ dataset['time']}}</p></div>
+            <div><p class="table">{{ dataset['name'][:-4]}}</p></div>
+            <div><p class="table">{{ dataset['size']}} KB</p></div>
+            <div><p class="table"><a href="uploads/{{dataset['name']}}" >Download</a></p></div>
+            <div><p class="table"><a href='/view/{{dataset['name']}}' target="_blank">View</a></p></div>
+            
+            {% endfor %}
+       </div>
+        
+        {% elif err == 1 %}
+        <h2 class='error'>No datasets found!</h2>
+        <p class="main"> Please try using different search words.</p>
+            
+        {% endif %}
+        <p></p>
+        <a href="/" class="home">Return to Homepage</a>
+	   <p></p>
+    </div>
+</body>
+</html>

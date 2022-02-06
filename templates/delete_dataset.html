@@ -1,0 +1,24 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>EPINuc - Delete dataset</title>
+</head>
+
+   <body>
+   <div class="main">
+       <h2 class='error'>Are you sure you want to permanently delete "{{ dataset_name }}" from the database?</h2>
+
+	  <p class="main">Please note that deleting "{{dataset_name}}" will result in
+       permanent removal and complete loss of the dataset.</p>
+	
+	  <p></p>
+          <div class="grid-container">
+                <div><a href="/delete/{{dataset_name}}">Yes</a></div>
+                <div><a href="/upload">No</a></div>
+                <div><a href="/">Return to Homepage</a></div>
+            </div>
+	   <p></p>
+	
+	</div>
+   </body>
+</html>

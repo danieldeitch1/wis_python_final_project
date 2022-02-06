@@ -1,0 +1,23 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>EPINuc - Search dataset</title>
+</head>
+
+   <body>
+	<div class="main">
+      <h1>Search database:</h1>
+	
+	 <p class="main">Look for dataset of interest by typing words in the search bar.</p>
+	  <p></p>
+		  
+	<form method="POST" action="/dataset_list">
+		<input name="word">
+		<input type="submit" value="Search">
+	</form>
+	
+	  <a href="/" class="home">Return to Homepage</a>
+	  <p></p>
+	  </div>
+</body>
+</html>
