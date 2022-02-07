@@ -18,7 +18,7 @@ valid_formats = ['.csv','.xls']
 
 app = Flask(__name__)
 
-#app.config["UPLOAD_FOLDER"] = 'uploader/'
+app.config["UPLOAD_FOLDER"] = dataset_path
 #app.config['MAX_CONTENT_PATH'] = 25000000
 
 @app.route('/')
@@ -149,15 +149,14 @@ def file_saver():
 # download a specific dataset
 @app.route('/uploads/<name>')
 def download_file(name):
-        
-    if '.csv' not in name and '.xls' not in name: # models download
-        app.config["UPLOAD_FOLDER"] = models_path
-        #file_path = models_path
+    if name == 'diagnosis_results.csv':
+        file_path = temp_folder_path
+    elif '.csv' not in name and '.xls' not in name: # models download
+        file_path = models_path
     else:
-        app.config["UPLOAD_FOLDER"] = temp_folder_path
-        #file_path = app.config["UPLOAD_FOLDER"]
+        file_path = app.config["UPLOAD_FOLDER"]
         
-    return send_from_directory(app.config["UPLOAD_FOLDER"], name)
+    return send_from_directory(file_path, name)
   
 
 
