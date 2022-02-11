@@ -15,10 +15,6 @@ temp_folder_path = join(app_path,'temp')
 models_path = join(app_path,'models')
 etc_folder_path = join(app_path,'etc')
 
-temp_folder_path = r'C:\Users\user\Desktop\flask\course\final_project\temp'
-
-etc_folder_path = r'C:\Users\user\Desktop\flask\course\final_project\etc'
-
 valid_file_column_names = json.load(open(join(etc_folder_path,"valid_file_column_names"), "r"))
 valid_formats = ['.csv','.xls']
 
