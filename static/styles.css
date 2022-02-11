@@ -34,6 +34,15 @@ h2.error{
 	margin-bottom: 5px;
 }
 
+h2.warning{
+	font-family: Calibri;
+	font-size: 30px;
+	color: #FFBA01;
+    margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+
 div.main{
 background-color: #FFFFFF;
 border: 5px solid #696969;
