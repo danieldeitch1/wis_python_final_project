@@ -6,14 +6,20 @@ import pandas as pd
 import glob
 from diagnostics import choose_ML_model, classify_data
 import numpy as np
+import json
 
 # define the path for dataset directory
 app_path = dirname(__file__)
 dataset_path = join(app_path,'dataset')
 temp_folder_path = join(app_path,'temp')
 models_path = join(app_path,'models')
+etc_folder_path = join(app_path,'etc')
 
+temp_folder_path = r'C:\Users\user\Desktop\flask\course\final_project\temp'
 
+etc_folder_path = r'C:\Users\user\Desktop\flask\course\final_project\etc'
+
+valid_file_column_names = json.load(open(join(etc_folder_path,"valid_file_column_names"), "r"))
 valid_formats = ['.csv','.xls']
 
 app = Flask(__name__)
@@ -103,8 +109,11 @@ def file_saver():
         
         if page_id == 'diag':
             err = -1
+            relevent_columns_names = valid_file_column_names[3:]
+            
         elif page_id == 'upload':
             err = 0
+            relevent_columns_names = valid_file_column_names
             
         # check if user selected a file
         if f.filename == '':
@@ -116,34 +125,68 @@ def file_saver():
             err = 2
             return render_template('uploader.html',err=err,page_id=page_id)
         
-        if err == 0:
+        file_temp_path = join(temp_folder_path,f.filename)
+        f.save(file_temp_path) # save dataset in temp folder
+        temp_dataset = pd.read_csv(file_temp_path) # load uploaded file as dataframe
+        uploaded_dataset_columns = list(temp_dataset.columns) # extract columns
+        
+        # check if uploaded file contain all required columns 
+        if not uploaded_dataset_columns == relevent_columns_names:
+            check =  all(item in uploaded_dataset_columns for item in relevent_columns_names)
+            if check is True: # uploaded file have all the required columns
+                if len(uploaded_dataset_columns) == len(relevent_columns_names): # columns are not organized in order
+                    temp_dataset = temp_dataset[relevent_columns_names]
+                    temp_dataset.to_csv(file_temp_path, index=False)
+                    err = 6
+                
+                else: # uploaded file contains extra columns which might not be in order
+                    temp_dataset = temp_dataset[relevent_columns_names]
+                    temp_dataset.to_csv(file_temp_path, index=False)
+                    err = 7
+                    
+            else: # uploaded file missing required columns
+                err = 8
+                return render_template('uploader.html',err=err,page_id=page_id)
+            
+        # check for invalid negative values in data
+        X = temp_dataset.copy()
+        if page_id == 'upload':
+            X = X.drop(['Subject','State','Diagnosis'], axis=1)
+            
+        data_column_names = valid_file_column_names[3:]
+
+        invalid_columns_ind = np.array((X < 0).any(), dtype=bool)
+        invalid_columns = np.array(data_column_names)[invalid_columns_ind] 
+        if len(invalid_columns) > 0:
+            err = 9
+            return render_template('uploader.html',err=err,page_id=page_id,
+                                   invalid_columns=invalid_columns)
+            
+        if page_id == 'upload':
+
             # check is file name already exists in the database
             file_list = listdir(dataset_path) # create a list of files in the 'datasets' directory
             if f.filename in file_list:
                 err = 3
-                return render_template('uploader.html',err=err)
-            
-            file_temp_path = join(temp_folder_path,f.filename)
-            f.save(file_temp_path) # save dataset in temp folder
+                return render_template('uploader.html',err=err,page_id=page_id)
             
             # check is file contant already exists in the database
-            temp_dataset = pd.read_csv(file_temp_path) 
             for file in file_list:
                 dataset = pd.read_csv(join(dataset_path,file))
                 if temp_dataset.equals(dataset):
                     err = 4
                     remove(file_temp_path) # delete the dataset from 'temp' folder
-                    return render_template('uploader.html',err=err)
+                    return render_template('uploader.html',err=err,page_id=page_id)
                 
             file_path = join(dataset_path,f.filename)
             rename(file_temp_path,file_path) # save dataset in the 'datasets' folder
             #remove(file_temp_path) # delete the dataset from 'temp' folder
             
-            return render_template('uploader.html', err=err), {"Refresh": "5; url=/upload"}
+            return render_template('uploader.html', err=err,page_id=page_id), {"Refresh": "5; url=/upload"}
         
-        elif err == -1:
+        elif page_id == 'diag':  
             file_path = join(temp_folder_path,'data_to_diagnose.csv')
-            f.save(file_path) # save dataset in 'temp' folder (will be deleted later on)
+            rename(file_temp_path,file_path) # save dataset in 'temp' folder (will be deleted later on)
             return render_template('choose_ref_dataset.html'), {"Refresh": "0; url=/choose_ref_dataset"}
         
 # download a specific dataset
@@ -170,7 +213,7 @@ def delete_dataset_msg(name):
 @app.route('/delete/<name>')
 def delete_file(name):
     remove(join(dataset_path,name))
-    err=5
+    err = 5
     return render_template('uploader.html',err=err,dataset_name=name), {"Refresh": "5; url=/upload"}
         
   

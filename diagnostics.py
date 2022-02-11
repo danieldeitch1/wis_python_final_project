@@ -94,12 +94,11 @@ def classify_data(file_path,chosen_model_path):
     df = pd.read_csv(file_path)
     
     # data preprocessing
-    df = df[df['Diagnosis'] != "CRC Stage I"]  # remove paitants with CRC stage I
     df = df.dropna() # remove rows with missing data
      
-    # Define the predictor parameters (X) and predicted parameter (y)
-    X = df.drop(['Subject','State','Diagnosis'], axis=1)
-   
+    # Define the predictor parameters (X)
+    X = df.copy()
+    
     # Data normalization (zscore standarization)
     scaler = preprocessing.StandardScaler().fit(X)
     X_scaled = scaler.transform(X)
