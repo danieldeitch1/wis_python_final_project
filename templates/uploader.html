@@ -59,10 +59,64 @@
                 <div></div>
                 <div><a href="/">Return to Homepage</a></div>
             </div>
+        
         {% elif err == 5 %}
             <h2>"{{dataset_name}}" was successfully deleted!</h2>
 	        <p class="block">You will be redirected back to the uploading page in 5 seconds</p>
+        
+        {% elif err == 6 %}
+            <h2 class="warning">Warning: File columns had to be reorganized for file to be uploaded successfully!</h2>
+	        <p class="block">You will be redirected back to the uploading page in 5 seconds</p>
        
+        {% elif err == 7 %}
+            <h2 class="warning">Warning: File contains more columns than required and had to be reorganized to be uploaded successfully!</h2>
+	        <p class="block">You will be redirected back to the uploading page in 5 seconds</p>
+        
+        {% elif err == 8 %}
+            <h1 class="error">Error! Missing columns!</h1>
+            <p class="block">Description: the selected dataset do not contain all the required columns.
+                <br/>
+            Please verify that the data features match the requirements specified in the README file. </p>
+            <p></p>
+            <div class="grid-container">
+                   
+                {% if page_id == 'upload' %}
+                <div><a href="/upload">Try again!</a></div>
+                {% elif page_id == 'diag' %}
+                <div><a href="/diagnosis">Try again!</a></div>
+                {% endif %}
+                
+                <div></div>
+                <div><a href="/">Return to Homepage</a></div>
+            </div>
+        
+            {% elif err == 9 %}
+            <h1 class="error">Error! Negative values found in data!</h1>
+            <p class="block">Description: the following columns contained negative values:
+                <br/>
+                {% for column in invalid_columns %}
+                    {% if column == invalid_columns[-1] %}
+                        '{{column}}'
+                    {% else %}
+                        '{{column}}',
+                    {% endif %}
+                {% endfor %}
+                <br/>
+            Please verify that the data features match the requirements specified in the README file. </p>
+            <p></p>
+        
+            <div class="grid-container">
+                   
+                {% if page_id == 'upload' %}
+                <div><a href="/upload">Try again!</a></div>
+                {% elif page_id == 'diag' %}
+                <div><a href="/diagnosis">Try again!</a></div>
+                {% endif %}
+                
+                <div></div>
+                <div><a href="/">Return to Homepage</a></div>
+            </div>
+        
         {% else %}
             <h2>File uploaded successfully!</h2>
 	        <p class="block">You will be redirected back to the uploading page in 5 seconds</p>

@@ -11,7 +11,7 @@
 	 <p class="main">Upload you own EPINuc data and get the diagnosis.</p>
 	  <p></p>
 		 
-     <form action = "http://localhost:5000/uploader" method = "POST" 
+     <form action = "{{ url_for('file_saver') }}" method = "POST" 
             enctype = "multipart/form-data">
           <input type = "file" name = "file"/>
           <input type = "submit"/>
