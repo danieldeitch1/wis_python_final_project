@@ -2,9 +2,9 @@
 by Daniel Deitch and Nir Erez
 
 # Installation: how to install EPINuc app in Windows OS
-1. Install *Python 3* (any version will work) and *Gitbash*/*Conda* prompt on your personal computer
+1. Install `python3` (any version will work) and `gitbash`/`Conda` prompt on your personal computer
 2. Fork/download the EPINuc_app repository to your personal computer
-3. Change directory to our repostory. This directory should contain the *requirements.txt*, *app.py* and *diagnostics.py* files.
+3. Change directory to our repostory. This directory should contain the `requirements.txt`, `app.py` and `diagnostics.py` files.
 4. Install the required moduls/packages by typing in the the command promp: `pip install -r requirements.txt`
 5. Run the application by typing in the the command promp: `python app.py`
 6. The epected output should be:
