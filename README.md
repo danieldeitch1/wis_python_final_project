@@ -27,17 +27,29 @@ For a step-by-step user guide, please read the *manual.doc* file.
 
 The EPINuc application have three main features that are currently available to use:
 ### 1. Diagnose data:
-This feature allows the user to upload his own patiants derived EPINuc data and recieve the diagnosis (Healthy or Cancer) for each of the samples in the dataset.
-The workflow has four steps:
-A. Upload data for diagnosis - In the first step the user can pick and upload a table of EPINuc data from his own personal computer. 
- and 
+This feature allows the user to upload his own patients derived EPINuc data and recieve the diagnosis (Healthy or Cancer) for each of the samples in the dataset.
+<br>The workflow has four steps:
+<br>**A. <ins>Upload data for diagnosis</ins>:**
+<br>In the first step the user can pick and upload a table of EPINuc data from his own personal computer.
 
 Requirements and quality assurance:
 * The data should be a table/matrix in a `.csv` or `.xls` format
 * The data should contain measurments from all the required EPINuc features specified in the `valid_file_column_names.json` provided in the `etc` directory of this repository.
-* The  `Subject`, `State` and `Diagnosis` are optional and will not be used in the analysis but can be used by the user later to verify the predictions of our application.
+* The  `Subject`, `State` and `Diagnosis` features are optional and will not be used in the analysis.
 * In cases some of the features are missing, an error will araise stating the features that are missing. In this case we recommend using a different dataset for diagnosis.
 * There are no restrictions on the order of the features in the data. In case that the order of the features is not as mentioned in the `valid_file_column_names.json` file, the application will detect the instance, raise a warning and reorgnize the data so it will be suitable for analysis.
+* The application should detect cases in which a file was not submitted by the user and raise an appropriate error messege.
+
+<br>**B. <ins>Choose a reference dataset for model fitting</ins>:**
+<br>The EPINuc application provides a variety of machine learning algorithems to choose from in order to diagnose your patiants.
+<br>In order to train and fit these classifiers the user can an available dataset from the existing database to be used a reference data for the traning/model fitting phase.
+<br>The application will display the available datasets in a form of a table and specify the amount of samples from each of the two categories of patients.
+<br>The user can inpect the dataset by pressing the `Veiw` option before choosing it.
+<br>If the user is not satisfied by the default datasets provided, it is possible to upload new datasets to the database by using the `Update database` feature of the application (see below).
+
+<br>**C. <ins>Choose a machine learning algorithm for pataint state prediction</ins>:**
+
+
 
 ### 2. Search database:
 
