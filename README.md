@@ -26,13 +26,13 @@ by Daniel Deitch and Nir Erez
 For a step-by-step user guide, please read the *manual.doc* file.
 
 The EPINuc application have three main features that are currently available to use:
-### 1. Diagnose data:
+### 1. <ins>Diagnose data</ins>:
 This feature allows the user to upload his own patients derived EPINuc data and recieve the diagnosis (Healthy or Cancer) for each of the samples in the dataset.
 <br>The workflow has four steps:
 <br>**A. <ins>Upload data for diagnosis</ins>:**
 <br>In the first step the user can pick and upload a table of EPINuc data from his own personal computer.
 
-Requirements and quality assurance:
+<ins>Requirements and quality assurance</ins>:
 * The data should be a table/matrix in a `.csv` or `.xls` format
 * The data should contain measurments from all the required EPINuc features specified in the `valid_file_column_names.json` provided in the `etc` directory of this repository.
 * The  `Subject`, `State` and `Diagnosis` features are optional and will not be used in the analysis.
@@ -48,9 +48,10 @@ Requirements and quality assurance:
 <br>If the user is not satisfied by the default datasets provided, it is possible to upload new datasets to the database by using the `Update database` feature of the application (see below).
 
 <br>**C. <ins>Choose a machine learning algorithm for pataint state prediction</ins>:**
+<br>After choosing the reference data and fitting the different models, the EPINuc application will display statistics and visuallizations that will help the user to appreciate the performance of the different models and the quality of the training dataset.
+<br>
 
 
+### 2. <ins>Search database</ins>:
 
-### 2. Search database:
-
-### 3. Update database:
+### 3. <ins>Update database</ins>:
