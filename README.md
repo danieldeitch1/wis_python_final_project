@@ -71,7 +71,7 @@ Currently the availeable summaries are:
 * The user can update database file, by deleting the old version file from the application using the "delete" button, followed by uploading the update EPINuc database, as mentioned above. Alternativly, the user can add to date or version number to the file name and upload it directly to the app without deleting the previous version of the database file.
 
 ### <ins>Application testing</ins>:
-<br> The user can test the application performance by trying to files from "tests" folder which consist several testing dataframes:
+<br> The user can test the application performance by trying to upload files from "tests" folder which consist several testing dataframes:
 * wrong_format.xlsx-  uploading this file will send the following error: "Error! Invalid file format!"
 * non_valid_negative_values.csv- uploading this file will send the following error: "Error! Negative values found in data!"
 * missing_columns.csv- uploading this file will send the following error: "Error! Missing columns!"
