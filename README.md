@@ -61,5 +61,6 @@ Currently the availeable summaries are:
 
 
 ### 2. <ins>Search database</ins>:
+<br> This feature allows the user to search through different EPINuc datasets which were uploaded to the application. The user can search a spesific dataset according to charachter/substring of its file name, and subsequently, also to view and download it to its computer. The user can view all the datasets that are currently uploaded to the app by searching dataset by an empty string.
 
 ### 3. <ins>Update database</ins>:
