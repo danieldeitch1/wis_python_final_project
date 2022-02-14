@@ -26,7 +26,7 @@ by Daniel Deitch and Nir Erez
 For a step-by-step user guide, please read the *manual.doc* file.
 
 The EPINuc application have three main features that are currently available to use:
-### Feature 1. <ins>Diagnose data</ins>:
+## Feature 1 - Diagnose data:
 This feature allows the user to upload his own patients derived EPINuc data and recieve the diagnosis (Healthy or Cancer) for each of the samples in the dataset.
 <br>The workflow has four steps:
 <br>**A. <ins>Upload data for diagnosis</ins>:**
@@ -76,7 +76,7 @@ The user will be able to download the train model of each classifier by clicking
 <br> after choosing the desired classification model, the application will use it in order to predict the health state of each sample in the uploaded test dataset.
 <br> The user can later either view or download the results by clicking the `View file` or `Download file` buttons respectively.
 
-### Feature 2. <ins>Search database</ins>:
+## Feature 2 - Search database:
 <br>This feature allows the user to search through the different  EPINuc datasets available in our database.
 <br>The user can search a specific dataset according to charachter/substring of the dataset name, and subsequently, also to view and download it to its computer.
 <br>The datasets found by the search engine will be displayed in the form of a table containg  discriptive information (e.g., time of upload, file size and dataset name) about the datasets.
@@ -85,14 +85,14 @@ The user will be able to download the train model of each classifier by clicking
 <br>Finally, after searching and finding the datasets of interset, the user will be able to either view or download the results by clicking the `View` or `Download` buttons respectively.
 
 
-### Feature 3. <ins>Update database</ins>:
+## Feature 3 - Update database:
 <br> This feature allows the user to upload/update/delete EPINuc database file:
 
 * In order to upload new database the user should validate that the file is in correct format as mentioned in the "Requirements and quality assurance" section.
 * The user can upload new databaseby pressing the "choose file" button followed by clicking the "submit" button.
 * The user can update database file, by deleting the old version file from the application using the "delete" button, followed by uploading the update EPINuc database, as mentioned above. Alternativly, the user can add to date or version number to the file name and upload it directly to the app without deleting the previous version of the database file.
 
-# <ins>Application testing</ins>:
+# Application testing:
 <br> The user can test the application performance by trying to upload files from "tests" folder which consist several testing dataframes:
 * wrong_format.xlsx-  uploading this file will send the following error: "Error! Invalid file format!"
 * non_valid_negative_values.csv- uploading this file will send the following error: "Error! Negative values found in data!"
