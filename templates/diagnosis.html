@@ -1,15 +1,18 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-    <title>EPINuc - Search dataset</title>
+    <title>EPINuc - Diagnose data</title>
 </head>
 
    <body>
 	<div class="main">
       <h1>Diagnose your data:</h1>
 	
-	 <p class="main">Upload you own EPINuc data and get the diagnosis.</p>
-	  <p></p>
+	 <p class="main">Upload EPINuc data from different samples (e.g. healthy or cancer patients) and to recieve their corresponding    prognosis groups.
+         <br>
+        <br>Please make sure the chosen file is in a '.csv' or '.xls' format and satisfying the requirements specified in the 'README.md' file.</p>
+	  <br>
+        
 		 
      <form action = "{{ url_for('file_saver') }}" method = "POST" 
             enctype = "multipart/form-data">

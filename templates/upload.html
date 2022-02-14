@@ -10,9 +10,10 @@
 	
 	  <p class="main">Select a file from your personal computer
 	  and upload it to the existing database. Note the the file must be in a ".csv"
-        or ".xls" format and shouldn't have the same name as other, already
-        existing datasets in the database. A full list of the available dataset appears in the section below.</p>
-	  <p></p>
+        or ".xls" format, must not have the same name as other, already
+        existing datasets in the database and should fully satisfy all the requirements specified in the 'README.md' file.</p>
+        <br>
+        
          <form action = "{{ url_for('file_saver') }}" method = "POST" 
          enctype = "multipart/form-data">
          <input type = "file" name = "file" />

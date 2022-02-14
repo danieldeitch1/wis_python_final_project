@@ -1,25 +1,15 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-    <title>EPINuc - XXXX</title>
+    <title>EPINuc - Diagnosis results</title>
 </head>
 
    <body>
    <div class="main">
       <h1>Diagnosis complete!</h1>
-	 <p class="main">Some statistics about the data bbla bla bla</p>
        <p></p>
-	 <div class="grid-container">
-	
-  <div>
-  <a href="/view/diagnosis_results.csv" target="_blank" class="button">View file</a></div>
-  <div>
-  <a href="/uploads/diagnosis_results.csv" class="button">Download file</a></div>
-	
-  <div>
-  <a href="/" class="button">Send to Email</a></div> 
-	 </div>
-       
+       <a href="/view/diagnosis_results.csv" target="_blank" class="button">View file</a>
+       <a href="/uploads/diagnosis_results.csv" class="button">Download file</a>
          <p></p>
           <div class="grid-container">
                 <div><a href="/choose_classifier/{{ref_dataset}}">Back (choose a different model)</a></div>
