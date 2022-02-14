@@ -15,11 +15,30 @@ from os import remove, listdir
 
 
 def choose_ML_model(path,file):
+    '''
+    This function will fit different machine learning algorithms that will later
+    be used in order to classify the user EPINuc data.
+
+    Parameters
+    ----------
+    path : STRING
+        PATH OF THE APP.PY FILE.
+    file : STRING
+        NAME OF THE FILE TO BE USED FOR TRAINING.
+
+    Returns
+    -------
+    results_dict : DICTIONARY
+        CONTAINS THE RESULTS OF THE DIFFERENT CLASSIFIERS.
+
+    '''
+    
+    # define paths for different folders in the application
     models_path = join(path,'models')
     static_folder_path = join(path,'static')
     datset_path = join(path,'dataset')
 
-    df = pd.read_csv(join(datset_path, file))
+    df = pd.read_csv(join(datset_path, file)) # load training data as dataframe
     
     # data preprocessing
     df = df[df['Diagnosis'] != "CRC Stage I"]  # remove paitants with CRC stage I
@@ -90,7 +109,23 @@ def choose_ML_model(path,file):
 
 
 def classify_data(file_path,chosen_model_path):
+    '''
+    This function will predict the prognosis group of the different samples
+    in the file chose by the user to diagnose.
 
+    Parameters
+    ----------
+    file_path : STRING
+        PATH TO THE FILE TO BE ANALYZED.
+    chosen_model_path : STRING
+        PATH TO THE MACHINE LEARNING MODEL FOR CLASSIFICATION.
+
+    Returns
+    -------
+    predicted_subjects_state : NUMPY ARRAY
+    AN ARRAY CONTAINING THE PROGNOSIS OF EACH SMAPLE
+
+    '''
     df = pd.read_csv(file_path)
     
     # data preprocessing
@@ -103,8 +138,10 @@ def classify_data(file_path,chosen_model_path):
     scaler = preprocessing.StandardScaler().fit(X)
     X_scaled = scaler.transform(X)
     
+    # load previously trained model
     chosen_model = pickle.load(open(chosen_model_path, 'rb'))
     
+    # predict patients' prognosis state
     predicted_subjects_state = chosen_model.predict(X_scaled)
     
     return predicted_subjects_state

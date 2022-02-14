@@ -8,20 +8,20 @@ from diagnostics import choose_ML_model, classify_data
 import numpy as np
 import json
 
-# define the path for dataset directory
+# define the paths for different directories of the application
 app_path = dirname(__file__)
 dataset_path = join(app_path,'dataset')
 temp_folder_path = join(app_path,'temp')
 models_path = join(app_path,'models')
 etc_folder_path = join(app_path,'etc')
 
+# define valid column names and file formats
 valid_file_column_names = json.load(open(join(etc_folder_path,"valid_file_column_names"), "r"))
 valid_formats = ['.csv','.xls']
 
 app = Flask(__name__)
 
-app.config["UPLOAD_FOLDER"] = dataset_path
-#app.config['MAX_CONTENT_PATH'] = 25000000
+app.config["UPLOAD_FOLDER"] = dataset_path # define the 'dataset' folder as upload directory
 
 @app.route('/')
 def home_page():
@@ -42,6 +42,7 @@ def html_table(name):
 def search_datasets():
    return render_template('dataset_search.html')
 
+# search for a dataset in the database using search engine
 @app.route('/dataset_list', methods=['POST'])
 def post_datasets():
     word = request.form.get('word', '')
@@ -52,6 +53,7 @@ def post_datasets():
         if file[-4:].lower() in valid_formats:
            dataset_list.append(file) 
     
+    # create a list of dictionaries containing information on all the datasets in the database
     all_items = []
     for dataset in dataset_list:
         dataset_dict = {}
@@ -62,7 +64,7 @@ def post_datasets():
         all_items.append(dataset_dict)
     
     err = 0
-    if word == '':
+    if word == '': # in case no input was given - post all datasets
         return render_template('dataset_list.html',dataset_list=all_items,err=err)
     else:
         searched_items = [] # subset only datasets with the searched item
@@ -80,6 +82,9 @@ def post_datasets():
 @app.route('/upload')
 def upload_file():
     dataset_list = listdir(dataset_path)
+    
+    # create a list of dictionaries containing information on all the datasets in the database
+    # this information will be displayed as a table in the bottom of the page
     all_items = []
     for dataset in dataset_list:
         dataset_dict = {}
@@ -90,7 +95,8 @@ def upload_file():
         all_items.append(dataset_dict)
         
     return render_template('upload.html',dataset_list=all_items)
-	
+
+# test whether uploaded file meets all the requirments
 @app.route('/uploader', methods = ['GET', 'POST'])
 def file_saver():
    if request.method == 'POST':
@@ -199,13 +205,13 @@ def download_file(name):
   
 
 
-# delete a specific dataset
+# warning messege before deleting a dataset
 @app.route('/delete_dataset/<name>')
 def delete_dataset_msg(name):
     return render_template('delete_dataset.html',dataset_name=name)
   
     
-# delete a specific dataset
+# delete a specific dataset after confirming the deletion
 @app.route('/delete/<name>')
 def delete_file(name):
     remove(join(dataset_path,name))
@@ -229,6 +235,7 @@ def choose_ref_dataset():
         if file[-4:].lower() in valid_formats:
            dataset_list.append(file) 
     
+    # create a list of available dataset for training
     all_items = []
     for dataset in dataset_list:
         dataset_dict = {}
@@ -260,8 +267,12 @@ def predict_state(name1,name2):
     data_to_diagnose_path=join(temp_folder_path,'data_to_diagnose.csv')
     chosen_model_path = join(models_path,name2)
     
+    # running the model on the test dataset
     predicted_subjects_state = classify_data(data_to_diagnose_path,chosen_model_path)
     
     file_path = join(temp_folder_path,'diagnosis_results.csv')
     np.savetxt(file_path, predicted_subjects_state, fmt='%s')
     return render_template('classify_data.html',ref_dataset=name1, predicted_subjects_state=predicted_subjects_state)
+
+if __name__ == "__main__":
+    app.run()
