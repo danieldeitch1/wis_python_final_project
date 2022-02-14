@@ -1,5 +1,12 @@
 # EPINuc app - WIS Advanced Python course final project
-by Daniel Deitch and Nir Erez
+Students names: Daniel Deitch and Nir Erez
+
+# Overview:
+Epigenetics of Plasma Isolated Nucleosomes (“EPINuc”). The test comprehensively profiles the epigenetics landscape of plasma DNA together with protein cancer biomarkers. Our system, which combines total internal reflection microscopy (TIRF) and DNA sequencing, enables us to measure for each blood sample a verity of different parameters (e.g., the distribution of different cell free nucleosomes histone modifications, global DNA methylation levels and quantity of cancer associated protein biomarkers) and generate a multi-layered characterization of the sample in single-molecule resolution.
+
+In our project, we aimed to develop a Python based applcation that receives EPINuc data from different samples (e.g. healthy or cancer patients) and then, by using a diverse set of machine-learning algorithms, classify the samples to their corresponding prognosis groups.
+
+This repository contains all the required files in order to run and use our application.
 
 # Installation: how to install EPINuc app on Windows OS
 1. Install `python3` (any version will work) and `gitbash`/`conda` prompt on your personal computer
