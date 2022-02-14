@@ -120,7 +120,7 @@ To facilitate the testing of our application by user , we included in to our rep
 
 When uploading files in the `diagnose data` or `update database` features use the following files:
 * `wrong_format.xlsx` - this file has an invalid `xlsx` format. Uploading this file will raise the following error: *"Error! Invalid file format!"*
-* `non_valid_negative_values.csv`- this file contain negative values in some of the data features. Uploading this file will raise the following error: *"Error! Negative values found in data!"*
+* `invalid_negative_values.csv`- this file contain negative values in some of the data features. Uploading this file will raise the following error: *"Error! Negative values found in data!"*
 * `missing_columns.csv` - this file contain a missing data feature. Uploading this file will send the following error: *"Error! Missing columns!"*
 * `extra_columns.csv` - this file contain a redundant data feature call `extra`. Uploading this file will raise the following message: *"Warning: File contains more columns than required and had to be reorganized to be uploaded successfully!"*
 * `diff_name_same_data.csv` - this file has a unique name but contain data already existing in the database (its a duplicate of the 'example_dataset.csv' file). Uploading this file will raise the following error: *"Error! Dataset already exist!"*
