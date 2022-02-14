@@ -70,7 +70,7 @@ Currently the availeable summaries are:
 * The user can upload new databaseby pressing the "choose file" button followed by clicking the "submit" button.
 * The user can update database file, by deleting the old version file from the application using the "delete" button, followed by uploading the update EPINuc database, as mentioned above. Alternativly, the user can add to date or version number to the file name and upload it directly to the app without deleting the previous version of the database file.
 
-### 4. <ins>Application testing</ins>:
+### <ins>Application testing</ins>:
 <br> The user can test the application performance by trying to files from "tests" folder which consist several testing dataframes:
 * wrong_format.xlsx-  uploading this file will send the following error: "Error! Invalid file format!"
 * non_valid_negative_values.csv- uploading this file will send the following error: "Error! Negative values found in data!"
@@ -80,7 +80,4 @@ Currently the availeable summaries are:
 * same_name_same_data.csv-  uploading this file will send the following error: "Error! Upload failed!"
 * wrong_columns_order.csv-  uploading this file will send the following message: "Warning: File columns had to be reorganized for file to be uploaded successfully!"
 
-* In order to upload new database the user should validate that the file is in correct format as mentioned in the "Requirements and quality assurance" section.
-* The user can upload new databaseby pressing the "choose file" button followed by clicking the "submit" button.
-* The user can update database file, by deleting the old version file from the application using the "delete" button, followed by uploading the update EPINuc database, as mentioned above. Alternativly, the user can add to date or version number to the file name and upload it directly to the app without deleting the previous version of the database file.
 
