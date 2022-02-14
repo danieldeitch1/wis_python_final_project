@@ -26,7 +26,7 @@ by Daniel Deitch and Nir Erez
 For a step-by-step user guide, please read the *manual.doc* file.
 
 The EPINuc application have three main features that are currently available to use:
-### 1. <ins>Diagnose data</ins>:
+### Feature 1. <ins>Diagnose data</ins>:
 This feature allows the user to upload his own patients derived EPINuc data and recieve the diagnosis (Healthy or Cancer) for each of the samples in the dataset.
 <br>The workflow has four steps:
 <br>**A. <ins>Upload data for diagnosis</ins>:**
@@ -74,12 +74,18 @@ The user will be able to download the train model of each classifier by clicking
 
 <br>**D. <ins>Predict patients' health state</ins>:**
 <br> after choosing the desired classification model, the application will use it in order to predict the health state of each sample in the uploaded test dataset.
-<br> The user can later either view or download the results by clicking the 'View file' or 'Download file' respectively.
+<br> The user can later either view or download the results by clicking the `View file` or `Download file` buttons respectively.
 
-### 2. <ins>Search database</ins>:
-<br> This feature allows the user to search through different EPINuc datasets which were uploaded to the application. The user can search a specific dataset according to charachter/substring of its file name, and subsequently, also to view and download it to its computer. The user can view all the datasets that are currently uploaded to the app by searching dataset by an entering an empty string.
+### Feature 2. <ins>Search database</ins>:
+<br>This feature allows the user to search through the different  EPINuc datasets available in our database.
+<br>The user can search a specific dataset according to charachter/substring of the dataset name, and subsequently, also to view and download it to its computer.
+<br>The datasets found by the search engine will be displayed in the form of a table containg  discriptive information (e.g., time of upload, file size and dataset name) about the datasets.
+<br>Entering an empty string in the search box will result in displating all the datasets that are currently available in the application database.
+<br>In case the database does not contain a dataset including the searched item in its name, the application will raise an error massage notifing the user to search again using different substring.
+<br>Finally, after searching and finding the datasets of interset, the user will be able to either view or download the results by clicking the `View` or `Download` buttons respectively.
 
-### 3. <ins>Update database</ins>:
+
+### Feature 3. <ins>Update database</ins>:
 <br> This feature allows the user to upload/update/delete EPINuc database file:
 
 * In order to upload new database the user should validate that the file is in correct format as mentioned in the "Requirements and quality assurance" section.
