@@ -108,7 +108,7 @@ Nevertheless, our application is programmed to detect and notify the using in th
 * The user can upload new databaseby pressing the `choose file` button followed by clicking the `submit` button.
 
 
-# Application testing:
+# Testing and quality assurance:
 To facilitate the testing of our application by user , we included in to our repository a folder (i.e., `tests`) containg a veraity of additional 'test' files.
 
 When uploading files in the `diagnose data` or `update database` features use the following files:
