@@ -85,8 +85,11 @@ This feature allows the user to search through the different  EPINuc datasets av
 
 ## Feature 3 - Update database:
 This feature allows the user to update the existing EPINuc database by either uploading new EPINuc datesets from the user personal computer or by permanently deleting existing datasets from the database.
+<br>The user can upload a file by pressing the `Choose file` button followed by pressing the `Submit` button.
+<br>The user can also update a file, by deleting the old version file from the databse pressing the `Delete` button and then uploading the newer version of the file following the procedure mentioned above.
+<br>Alternativly, the user can add and extention/indentifier to the file name and then upload it directly to the database.
 
-In order to upload new database the user should first validate that the file of interst satisfy the following requirements and restrictions:
+It is important to note that in order to upload new database, the user should first validate that the file of interst satisfy the following requirements and restrictions:
 1. The data must be a table/matrix in a `.csv` or `.xls` format.
 2. The dataset must contain measurments from all the required EPINuc features specified in the `valid_file_column_names.json` provided in the `etc` directory of this repository.
 3. The name of the chosen dataset  does not already exist in the database.
@@ -98,17 +101,18 @@ Nevertheless, our application is programmed to detect and notify the using in th
 * Cases in which the user has chosen to upload a file with missing data features will be detected by the application which later will notify the user by displaying an error messege.
 * In case the chosen dataset contains additional features beyond thos specified in the `valid_file_column_names.json` the application will detect the instance, raise a warning and remove the extra features from the dataset before uploading it to the database.
 * There are no restrictions on the order of the features in the data. In case that the order of the features is not as mentioned in the `valid_file_column_names.json` file, the application will detect the instance, raise a warning and reorgnize the data so it will be suitable for analysis.
-* The aplication should detect datasets with names alreadt existing in the database and raise an appropriate error messege.
-* The aplication should detect datasets with names alreadt existing in the database and raise an appropriate error messege.
+* Cases in which the chosen dataset name already existing in the database will raise an appropriate error messege.
+* The aplication should detect datasets which are a duplicate of other already existing datasets in the database.
 * The aplication should detect datasets with invalid negative values and raise an appropriate error messege.
 * The application should detect cases in which a file was not submitted by the user and raise an appropriate error messege.
+* The user can upload new databaseby pressing the `choose file` button followed by clicking the `submit` button.
 
-* The user can upload new databaseby pressing the "choose file" button followed by clicking the "submit" button.
-* The user can update database file, by deleting the old version file from the application using the "delete" button, followed by uploading the update EPINuc database, as mentioned above. Alternativly, the user can add to date or version number to the file name and upload it directly to the app without deleting the previous version of the database file.
 
 # Application testing:
-<br> The user can test the application performance by trying to upload files from "tests" folder which consist several testing dataframes:
-* wrong_format.xlsx-  uploading this file will send the following error: "Error! Invalid file format!"
+To facilitate the testing of our application by user , we included in to our repository a folder (i.e., `tests`) containg a veraity of additional 'test' files.
+
+When uploading files in the `diagnose data` or `update database` features use the following files:
+* `wrong_format.xlsx` - this file has an invalid `xlsx` format. Thus uploading this file will raise the following error: `Error! Invalid file format!`
 * non_valid_negative_values.csv- uploading this file will send the following error: "Error! Negative values found in data!"
 * missing_columns.csv- uploading this file will send the following error: "Error! Missing columns!"
 * extra_columns.csv- uploading this file will send the following message: "Warning: File contains more columns than required and had to be reorganized to be uploaded successfully!"
