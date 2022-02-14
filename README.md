@@ -2,7 +2,7 @@
 by Daniel Deitch and Nir Erez
 
 # Installation: how to install EPINuc app in Windows OS
-1. Install `python3` (any version will work) and `gitbash`/`Conda` prompt on your personal computer
+1. Install `python3` (any version will work) and `gitbash`/`conda` prompt on your personal computer
 2. Fork/download the EPINuc_app repository to your personal computer
 3. Change directory to our repostory. This directory should contain the `requirements.txt`, `app.py` and `diagnostics.py` files.
 4. Install the required moduls/packages by typing in the the command promp: `pip install -r requirements.txt`
@@ -61,14 +61,20 @@ This feature allows the user to upload his own patients derived EPINuc data and 
 6. Support Vector Machine (SVM)
 
 <br>Each classifier has different assumptions and uses different aspects of the data to perform its predictions.
-Therefore it will be wise to intersect the results produced by the different classifiers in order to decrease the probability for a miscalssification.
-We used the defualt parameters 
+<br>Therefore, it will be wise to intersect the results produced by the different classifiers in order to decrease the probability for a miscalssification.
+<br>Note that we used the defualt parameters for all the classifiers. 
 
 Currently the availeable summaries are:
 * Principal component analysis (PCA) - a linear dimentionality reduction algorithm performed on all the 24 features of the EPINuc data.
 <br> The analysis results in a scatter plot based on the first two principal components of the data. The heathly patients data points are colored in blue and the cancer patients in red.
-* Percentage of correct classifications for each of the 
+* Boxplots illustrating the distribution of percentage of correct classifications for each classifier as obtained using 10-fold cross-validation.
+* Summary table displying statistics about the performance of each classifier.
 
+The user will be able to download the train model of each classifier by clicking the `Download` button or choose a specific classifier for predicting the patients' health state.
+
+<br>**D. <ins>Predict patients' health state</ins>:**
+<br> after choosing the desired classification model, the application will use it in order to predict the health state of each sample in the uploaded test dataset.
+<br> The user can later either view or download the results by clicking the 'View file' or 'Download file' respectively.
 
 ### 2. <ins>Search database</ins>:
 <br> This feature allows the user to search through different EPINuc datasets which were uploaded to the application. The user can search a specific dataset according to charachter/substring of its file name, and subsequently, also to view and download it to its computer. The user can view all the datasets that are currently uploaded to the app by searching dataset by an entering an empty string.
@@ -80,7 +86,7 @@ Currently the availeable summaries are:
 * The user can upload new databaseby pressing the "choose file" button followed by clicking the "submit" button.
 * The user can update database file, by deleting the old version file from the application using the "delete" button, followed by uploading the update EPINuc database, as mentioned above. Alternativly, the user can add to date or version number to the file name and upload it directly to the app without deleting the previous version of the database file.
 
-### <ins>Application testing</ins>:
+# <ins>Application testing</ins>:
 <br> The user can test the application performance by trying to upload files from "tests" folder which consist several testing dataframes:
 * wrong_format.xlsx-  uploading this file will send the following error: "Error! Invalid file format!"
 * non_valid_negative_values.csv- uploading this file will send the following error: "Error! Negative values found in data!"
