@@ -1,7 +1,7 @@
 # EPINuc app - WIS Advanced Python course final project
 by Daniel Deitch and Nir Erez
 
-# Installation: how to install EPINuc app in Windows OS
+# Installation: how to install EPINuc app on Windows OS
 1. Install `python3` (any version will work) and `gitbash`/`conda` prompt on your personal computer
 2. Fork/download the EPINuc_app repository to your personal computer
 3. Change directory to our repostory. This directory should contain the `requirements.txt`, `app.py` and `diagnostics.py` files.
