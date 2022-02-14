@@ -47,9 +47,16 @@ This feature allows the user to upload his own patients derived EPINuc data and 
 <br>The user can inpect the dataset by pressing the `Veiw` option before choosing it.
 <br>If the user is not satisfied by the default datasets provided, it is possible to upload new datasets to the database by using the `Update database` feature of the application (see below).
 
-<br>**C. <ins>Choose a machine learning algorithm for pataint state prediction</ins>:**
+<br>**C. <ins>Choose a machine learning algorithm for patients' state prediction</ins>:**
 <br>After choosing the reference data and fitting the different models, the EPINuc application will display statistics and visuallizations that will help the user to appreciate the performance of the different models and the quality of the training dataset.
-<br>
+
+<ins>The available classifiers are</ins>:
+1. 
+
+Currently the availeable summaries are:
+* Principal component analysis (PCA) - a linear dimentionality reduction algorithm performed on all the 24 features of the EPINuc data.
+<br> The analysis results in a scatter plot based on the first two principal components of the data. The heathly patients data points are colored in blue and the cancer patients in red.
+* Percentage of correct classifications for each of the 
 
 
 ### 2. <ins>Search database</ins>:
