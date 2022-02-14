@@ -38,6 +38,7 @@ This feature allows the user to upload his own patients derived EPINuc data and 
 * The  `Subject`, `State` and `Diagnosis` features are optional and will not be used in the analysis.
 * In cases some of the features are missing, an error will araise stating the features that are missing. In this case we recommend using a different dataset for diagnosis.
 * There are no restrictions on the order of the features in the data. In case that the order of the features is not as mentioned in the `valid_file_column_names.json` file, the application will detect the instance, raise a warning and reorgnize the data so it will be suitable for analysis.
+* The aplication should detect datasets with invalid negative values and raise an appropriate error messege.
 * The application should detect cases in which a file was not submitted by the user and raise an appropriate error messege.
 
 <br>**B. <ins>Choose a reference dataset for model fitting</ins>:**
