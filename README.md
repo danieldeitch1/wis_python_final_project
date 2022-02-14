@@ -66,6 +66,6 @@ Currently the availeable summaries are:
 ### 3. <ins>Update database</ins>:
 <br> This feature allows the user to upload/update/delete EPINuc database file:
 
-* In order to upload new database the file should be in a correct format as mentioned in the "Requirements and quality assurance" section.
+* In order to upload new database the user should validate that the file is in correct format as mentioned in the "Requirements and quality assurance" section.
 * The user can upload new databaseby pressing the "choose file" button followed by clicking the "submit" button.
 * The user can update database file, by deleting the old version file from the application using the "delete" button, followed by uploading the update EPINuc database, as mentioned above. Alternativly, the user can add to date or version number to the file name and upload it directly to the app without deleting the previous version of the database file.
