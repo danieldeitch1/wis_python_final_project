@@ -13,7 +13,7 @@ This repository contains all the required files in order to run and use our appl
 2. Fork/download the this repository to your personal computer
 3. Change directory to our repostory. This directory should contain the `requirements.txt`, `app.py` and `diagnostics.py` files.
 4. Install the required moduls/packages by typing in the the command promp: `pip install -r requirements.txt`
-5. Run the application by typing in the the command promp `export FLASK_APP=app` and then `flask run`
+5. Run the application by typing in the the *gitbash* command promp `export FLASK_APP=app` (or `set export FLASK_APP=app` in *conda*) and then `flask run`
 6. The epected output should be:
 ```
 * Serving Flask app "app"
