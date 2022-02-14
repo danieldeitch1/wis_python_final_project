@@ -6,10 +6,10 @@ by Daniel Deitch and Nir Erez
 2. Fork/download the EPINuc_app repository to your personal computer
 3. Change directory to our repostory. This directory should contain the `requirements.txt`, `app.py` and `diagnostics.py` files.
 4. Install the required moduls/packages by typing in the the command promp: `pip install -r requirements.txt`
-5. Run the application by typing in the the command promp: `python app.py`
+5. Run the application by typing in the the command promp `export FLASK_APP=app` and then `flask run`
 6. The epected output should be:
 ```
-* Serving Flask app "app" (lazy loading)
+* Serving Flask app "app"
 * Environment: production
   WARNING: This is a development server.
   Do not use it in a production deployment.
@@ -31,6 +31,7 @@ This feature allows the user to upload his own patients derived EPINuc data and 
 <br>The workflow has four steps:
 <br>**A. <ins>Upload data for diagnosis</ins>:**
 <br>In the first step the user can pick and upload a table of EPINuc data from his own personal computer.
+<br>Upload a file to analyze is done pressing the "choose file" button followed by clicking the "submit" button. 
 
 <ins>Requirements and quality assurance</ins>:
 * The data should be a table/matrix in a `.csv` or `.xls` format
@@ -52,7 +53,16 @@ This feature allows the user to upload his own patients derived EPINuc data and 
 <br>After choosing the reference data and fitting the different models, the EPINuc application will display statistics and visuallizations that will help the user to appreciate the performance of the different models and the quality of the training dataset.
 
 <ins>The available classifiers are</ins>:
-1. 
+1. Logistic Regression (LR)
+2. Decision Tree Classifier (CART)
+3. k-Nearest Neighbors (KNN)
+4. Linear Discriminant Analysis (LDA)
+5. Naive Bayes classifier (NB)
+6. Support Vector Machine (SVM)
+
+<br>Each classifier has different assumptions and uses different aspects of the data to perform its predictions.
+Therefore it will be wise to intersect the results produced by the different classifiers in order to decrease the probability for a miscalssification.
+We used the defualt parameters 
 
 Currently the availeable summaries are:
 * Principal component analysis (PCA) - a linear dimentionality reduction algorithm performed on all the 24 features of the EPINuc data.
