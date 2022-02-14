@@ -120,4 +120,6 @@ When uploading files in the `diagnose data` or `update database` features use th
 * `example_dataset.csv` - this file has unique data but has a name that already exist in the database. Uploading this file will send the following error: *"Error! Upload failed!"*
 * `wrong_columns_order.csv` - this is a valid file, however, the order of some of the different data features was shuffled. Uploading this file will send the following message: *"Warning: File columns had to be reorganized for file to be uploaded successfully!"*
 
+In addition, in order to test the performance of diagnosis analysis, we included two additional datasets to our repository - `example_test_data.csv` and `example_test_data_shuffled.csv`.
+<br>These datasets contain data on subjects that are not included in the available datasets (e.g., `example_dataset.csv`) and therefor are suitable for testing the generalization of the different classifiers used by our application.
 
