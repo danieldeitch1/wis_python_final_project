@@ -112,12 +112,12 @@ Nevertheless, our application is programmed to detect and notify the using in th
 To facilitate the testing of our application by user , we included in to our repository a folder (i.e., `tests`) containg a veraity of additional 'test' files.
 
 When uploading files in the `diagnose data` or `update database` features use the following files:
-* `wrong_format.xlsx` - this file has an invalid `xlsx` format. Thus uploading this file will raise the following error: `Error! Invalid file format!`
-* non_valid_negative_values.csv- uploading this file will send the following error: "Error! Negative values found in data!"
-* missing_columns.csv- uploading this file will send the following error: "Error! Missing columns!"
-* extra_columns.csv- uploading this file will send the following message: "Warning: File contains more columns than required and had to be reorganized to be uploaded successfully!"
-* diff_name_same_data.csv- uploading this file will send the following error: "Error! Dataset already exist!"
-* same_name_same_data.csv-  uploading this file will send the following error: "Error! Upload failed!"
-* wrong_columns_order.csv-  uploading this file will send the following message: "Warning: File columns had to be reorganized for file to be uploaded successfully!"
+* `wrong_format.xlsx` - this file has an invalid `xlsx` format. Uploading this file will raise the following error: *"Error! Invalid file format!"*
+* `non_valid_negative_values.csv`- this file contain negative values in some of the data features. Uploading this file will raise the following error: *"Error! Negative values found in data!"*
+* `missing_columns.csv`- uploading this file will send the following error: *"Error! Missing columns!"*
+* `extra_columns.csv`- this file contain a redundant data feature call `extra`. Uploading this file will raise the following message: *"Warning: File contains more columns than required and had to be reorganized to be uploaded successfully!"*
+* `diff_name_same_data.csv` - this file has a unique name but contain data already existing in the database (its a duplicate of the `example_dataaset.csv` file). Uploading this file will raise the following error: *"Error! Dataset already exist!"*
+* `example_dataset.csv` - this file has unique data but has a name that already exist in the database. Uploading this file will send the following error: *"Error! Upload failed!"*
+* `wrong_columns_order.csv` -  uploading this file will send the following message: "Warning: File columns had to be reorganized for file to be uploaded successfully!"
 
 
