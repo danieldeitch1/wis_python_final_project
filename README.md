@@ -23,8 +23,6 @@ by Daniel Deitch and Nir Erez
 
 
 # Documentation:
-For a step-by-step user guide, please read the *manual.doc* file.
-
 The EPINuc application have three main features that are currently available to use:
 ## Feature 1 - Diagnose data:
 This feature allows the user to upload his own patients derived EPINuc data and recieve the diagnosis (Healthy or Cancer) for each of the samples in the dataset.
@@ -77,7 +75,7 @@ The user will be able to download the train model of each classifier by clicking
 <br> The user can later either view or download the results by clicking the `View file` or `Download file` buttons respectively.
 
 ## Feature 2 - Search database:
-<br>This feature allows the user to search through the different  EPINuc datasets available in our database.
+This feature allows the user to search through the different  EPINuc datasets available in our database.
 <br>The user can search a specific dataset according to charachter/substring of the dataset name, and subsequently, also to view and download it to its computer.
 <br>The datasets found by the search engine will be displayed in the form of a table containg  discriptive information (e.g., time of upload, file size and dataset name) about the datasets.
 <br>Entering an empty string in the search box will result in displating all the datasets that are currently available in the application database.
@@ -86,9 +84,25 @@ The user will be able to download the train model of each classifier by clicking
 
 
 ## Feature 3 - Update database:
-<br> This feature allows the user to upload/update/delete EPINuc database file:
+This feature allows the user to update the existing EPINuc database by either uploading new EPINuc datesets from the user personal computer or by permanently deleting existing datasets from the database.
 
-* In order to upload new database the user should validate that the file is in correct format as mentioned in the "Requirements and quality assurance" section.
+In order to upload new database the user should first validate that the file of interst satisfy the following requirements and restrictions:
+1. The data must be a table/matrix in a `.csv` or `.xls` format.
+2. The dataset must contain measurments from all the required EPINuc features specified in the `valid_file_column_names.json` provided in the `etc` directory of this repository.
+3. The name of the chosen dataset  does not already exist in the database.
+4. The chosen dataset is not a duplicate of an other dataset already exist in the database.
+5. There are not negative values in the chosen dataset.
+
+Nevertheless, our application is programmed to detect and notify the using in the following scenarios:
+* Cases in which the user has chosen to upload a file with an invalid format will be detected by the application which later will notify the user by displaying an error messege.
+* Cases in which the user has chosen to upload a file with missing data features will be detected by the application which later will notify the user by displaying an error messege.
+* In case the chosen dataset contains additional features beyond thos specified in the `valid_file_column_names.json` the application will detect the instance, raise a warning and remove the extra features from the dataset before uploading it to the database.
+* There are no restrictions on the order of the features in the data. In case that the order of the features is not as mentioned in the `valid_file_column_names.json` file, the application will detect the instance, raise a warning and reorgnize the data so it will be suitable for analysis.
+* The aplication should detect datasets with names alreadt existing in the database and raise an appropriate error messege.
+* The aplication should detect datasets with names alreadt existing in the database and raise an appropriate error messege.
+* The aplication should detect datasets with invalid negative values and raise an appropriate error messege.
+* The application should detect cases in which a file was not submitted by the user and raise an appropriate error messege.
+
 * The user can upload new databaseby pressing the "choose file" button followed by clicking the "submit" button.
 * The user can update database file, by deleting the old version file from the application using the "delete" button, followed by uploading the update EPINuc database, as mentioned above. Alternativly, the user can add to date or version number to the file name and upload it directly to the app without deleting the previous version of the database file.
 
